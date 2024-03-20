@@ -1,6 +1,6 @@
 import React from 'react';
-import { HeroCard } from '../components';
 import queryString from "query-string";
+import { HeroCard } from '../components';
 import { useForm } from '../../hooks/useForm';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getHeroesByName } from '../helpers';
@@ -30,7 +30,7 @@ export const Search = () => {
         <div className="col-5">
           <h4>Searching</h4>
           <hr />
-          <form onSubmit={onSearchSubmit}>
+          <form aria-label="form" onSubmit={onSearchSubmit}>
             <input
               type="text"
               placeholder="Search a hero"
@@ -47,7 +47,7 @@ export const Search = () => {
           <h4>Results:</h4>
           <hr />
           <div className="alert alert-primary animate__animated animate__fadeIn" style={{display: showSearch ? "":"none"}}>Search a hero</div> 
-          <div className="alert alert-danger animate__animated animate__fadeIn" style={{display: showError ? "" : "none"}}>No hero found with {q}</div>
+          <div aria-label="alert-danger" className="alert alert-danger animate__animated animate__fadeIn" style={{display: showError ? "" : "none"}}>No hero found with {q}</div>
           {
             heroes.map(hero=><HeroCard key={hero.id} {...hero}/>)
           }
